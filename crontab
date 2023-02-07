@@ -1,0 +1,1 @@
+10 * * * * export python3='/Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python';$python3 /Users/galoisfield/Twitter/Twitter_python/tweets.py >> /Users/galoisfield/Twitter/Twitter_python/stdout.log 2> /Users/galoisfield/Twitter/Twitter_python/stderr.log
