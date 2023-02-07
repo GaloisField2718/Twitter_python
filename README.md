@@ -12,7 +12,7 @@ I will briefly details after what I used to get cryptocurrencies prices 🤑, wh
 
 ### 2. 🐚 Give some advice to use Twitter on python3 command-line
 
-I also want to provide the basic shell commands I use to interact with *@Marketcryptopy* on my console. 
+I also want to provide the basic shell commands I use to interact with *[@Marketcryptopy](https://twitter.com/marketcryptopy)* on my console. 
 I'm trying to use *MarketCryptoPy* only in command line and never interact through Twitter interface. Sometimes it's harder but it's fun to see it's possible.
 
 
