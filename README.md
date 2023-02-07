@@ -25,7 +25,7 @@ To get prices I use 2 differents API :
 
 👉 *MarketCryptoPy* : **python-binance**.
  
-The unofficial documentation : (python-binance)[https://python-binance.readthedocs.io/en/latest/] but it's quite hard to onboard through this. There is an incredible Youtube Channel (@cryptorobotfr)[https://www.youtube.com/@cryptorobotfr], they are french but you can translate and their code is in english so don't worry 😁.
+The unofficial documentation : [python-binance](https://python-binance.readthedocs.io/en/latest/) but it's quite hard to onboard through this. There is an incredible Youtube Channel (@cryptorobotfr)[https://www.youtube.com/@cryptorobotfr], they are french but you can translate and their code is in english so don't worry 😁.
 
 One very good video to beginning with python-binance package ([TUTO FR] Créer son PROPRE BOT DE TRADING CRYPTO facilement en Python !)[https://www.youtube.com/watch?v=_gNIWHh539A&t=1221s] and the associated github repo (create personnal trading bot)[https://github.com/CryptoRobotFr/1-create-personnal-trading-bot]
 
