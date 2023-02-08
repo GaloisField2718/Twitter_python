@@ -5,13 +5,19 @@
 ### Requirements
 
 **python packages**
+
 👉 `pip3 install urllib`
+
 👉 `pip3 install requests`
+
 👉 `pip3 install json`
+
 👉 `pip3 install pprint` *This is to get data in an easy reading way.*
+
 👉 `pip3 install tweepy` **Main Package to make tweets !**
 
 **cron**
+
 👉 `npm install cron`
 
 
