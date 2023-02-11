@@ -1,6 +1,7 @@
 """ 
-L'idée étant qu'un agrégateur doit être une meilleure solution pour avoir 
-la capitalisation boursière des cryptos que les exchanges.
+@author: GaloisField
+
+@params : Your CoinMarketCap API KEY
 
 """
 
@@ -10,26 +11,47 @@ import pprint
 
 url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 
+###########################################################################
+############				Parameters						############### 		
+###########################################################################
+"""
+@note : These are parameters for /listings/latest if one changes url 
+		parameters should change
+""" 
 parameters = {
 	'start':'1',
-	'limit':'5000',
+	'limit':'100',
 	'convert':'USD'
 }
 
+"""
+@note : This should be the same for every url.
+"""
 headers = {
 	'Accepts' : 'application/json',
-	'X-CMC_PRO_API_KEY' : 'e3763607-e592-4ba9-b6d5-3769d4a54290'
+	'X-CMC_PRO_API_KEY' : 'YOUR_API_KEY'
 }
 
+###########################################################################
+#################			Connexion 						###############
+###########################################################################
 session = Session()
 session.headers.update(headers)
-
 response = session.get(url, params=parameters)
 
+"""
+@note : Most important object for our interest.
+"""
 data = json.loads(response.text)['data']
 
-# Pour vérifier le contenu de data
+"""
+@note You should try this one to take an overview about data
+"""
 #pprint.pprint(data)
+
+###########################################################################
+#############		Functions to simplify messages 			###############
+###########################################################################
 
 
 def getIndexFromSymbol(data,symbol):
@@ -42,7 +64,9 @@ def getIndexFromSymbol(data,symbol):
 	return "No matches found with this symbol"
 
 
-# A améliorer car dépendante du code au-dessus
+"""
+@todo :  Improve this function because is dependent of the above function.
+"""
 def getCMCRankFromSymbol(data,symbol):
 	lenght = len(data)
 	index = getIndexFromSymbol(data,symbol)
@@ -52,10 +76,6 @@ def getCMCRankFromSymbol(data,symbol):
 
 	except ValueError:
 		return "ERROR : index not found"
-
-
-symbol = 'NEAR'
-
 
 
 def getIndexFromRank(data,cmc_rank):
@@ -73,7 +93,6 @@ def getSymbolFromRank(data,cmc_rank):
 
 
 def getPercentChange(data,frequency,symbol):
-	
 	# Transforme la chaîne frequency en minuscule
 	frequency = frequency.lower()
 	# Choisit le bon pourcentage avec match variable: case...
@@ -118,8 +137,16 @@ def signValue(value) :
 		plusMoinsSymbol = f""
 	return plusMoinsSymbol
 
-# Il faut calculer le nombre de chiffres après la virgule pour la fonction metsLesVirgules
 
+
+###########################################################################
+############## 		Mise en page pour les grands nombres 		###########
+###	@note:j'ai appris qu'il existait des fonctions pour faire ceci ########
+## 				mais ce code peut me servir un jour...			###########	
+###########################################################################
+
+
+# Il faut calculer le nombre de chiffres après la virgule pour la fonction metsLesVirgules
 def getNombreChiffresApresVirgule(value):
 	valueInt = str(int(value))
 	value = str(value)
@@ -179,7 +206,11 @@ def metLesVirgules(value):
 			return nombreReecris
 	else :
 		# Pour éviter de calculer a-int(a), je convertit en chaîne de caractère a puis j'enlève len(int(a)) sur les premiers caractères
-
+		"""
+			@note : a-int(a) ≠ decimal(a) because there are some little variations 
+					in the float such that : we can't compute by the arithmetic way 
+					this difference.
+		"""
 		valueDecimale = str(value)
 		textValue = str(value)
 		textIntValue = str(int(value))
