@@ -1,5 +1,6 @@
 # Twitter python
 
+
 ## ✅ Setup
 
 ### Requirements
@@ -20,6 +21,8 @@
 
 👉 `npm install cron`
 
+**TESTING integration**
+👉 `pip3 install textwrap`
 
 If you have some of those packages, download only necessary ones.
 
@@ -43,6 +46,7 @@ python3 tweets.py
 7️⃣ Automation with cron :
 
 
+
 ## 🎯 Goal
 
 ### 1. 🙌 Give the code which is running on Twitter
@@ -58,7 +62,16 @@ I will briefly details after what I used to get cryptocurrencies prices 🤑, wh
 I also want to provide the basic shell commands I use to interact with *[@Marketcryptopy](https://twitter.com/marketcryptopy)* on my console. 
 I'm trying to use this account only in command line and never interact through Twitter interface. Sometimes it's harder but it's fun to see it's possible.
 
+# ADDED COINMARKETCAP (CMC) LAST LISTINGS
 
+🧪 I tried to connect CMC API with `latest Listings url`, `metadata url` and `tweepy` to get information about new CMC listings. Especially get important data as website, description, social medias,...
+
+㊷ Unfortunately, the `textwrap` python which I used seems to not produce convienent output :
+
+```
+Your Tweet text is too long. For more information on how Twitter determines text length see https://github.com/twitter/twitter-text.
+```
+I'm working hard on this issue to produce soon 🔜 a working bot for this job.
 
 ## 🔩 Tools
 
@@ -66,19 +79,20 @@ I'm trying to use this account only in command line and never interact through T
 
 To get prices I use 2 differents API :
 
-👉 *MarketCryptoPy* : **python-binance**.
+👉 *MarketCryptoPy* : **CoinMarketCap-API**.
  
-The unofficial documentation : [python-binance](https://python-binance.readthedocs.io/en/latest/) but it's quite hard to onboard through this. There is an incredible Youtube Channel [@cryptorobotfr](https://www.youtube.com/@cryptorobotfr), they are french but you can translate the video and their code is in english so don't worry 😁.
+📜 The unofficial documentation : [python-binance](https://python-binance.readthedocs.io/en/latest/) but it's quite hard to onboard through this. There is an incredible Youtube Channel [@cryptorobotfr](https://www.youtube.com/@cryptorobotfr), they are french but you can translate the video and their code is in english so don't worry 😁.
 
 📺 One very good video to begin with python-binance package [[TUTO FR] Créer son PROPRE BOT DE TRADING CRYPTO facilement en Python !](https://www.youtube.com/watch?v=_gNIWHh539A&t=1221s) and the associated github repo [create personnal trading bot](https://github.com/CryptoRobotFr/1-create-personnal-trading-bot).
 
 
-👉 *DogeAccountPy* : **CoinMarketCap-API**.
+👉 *DogeAccountPy* : **python-binance**.
 
-I used a Youtube channel to onboard with CoinMarketCap API but I don't find it anymore. So, to begin you can take a look on Youtube and it's not hard to find one. 
-In addition, you have obviously this code which is functionnal (but not optimize).
+📜 Documentation : [CoinMarketCap API Documentation](https://coinmarketcap.com/api/documentation/v1)
 
-> --Je le sais je t'ai vu [Le Design Pattern Contre-Intuitif le plus utilisé par les Développeurs Professionnels](https://youtu.be/zto9F3ANVXA).--
+📺 Youtube channels can help you to onboard with CoinMarketCap API.
+
+🔍 Looking for optimization [Le Design Pattern Contre-Intuitif le plus utilisé par les Développeurs Professionnels](https://youtu.be/zto9F3ANVXA).--
 
 
 ### 2. 🐣 Tweepy
@@ -107,7 +121,7 @@ Still in french you can find a good detail about how to deploy an AWS free insta
 
 ## Structure
 
-### 1. Main repo
+### 1. PricesByCMC
 
 👉 **config.py** : which stores every twitter access keys.
 
@@ -119,7 +133,7 @@ Still in french you can find a good detail about how to deploy an AWS free insta
 
 👉 **crontab** : the file where the command is stored to automate post.
 
-### 2. All-in-one
+### 2. PricesByBinance
 
 This uses python-binance package, and contains only two files : 
 
@@ -128,9 +142,17 @@ This uses python-binance package, and contains only two files :
 👉 **config.py** : still a config file to run all of this.
 
 
+### 3. NewListingOnCMC
 
+👉 **listings_cmc.py** : make the call to get latest CMC listings.
 
+👉 **metadata_listings.py** : provide metadata related to latest listings taking from `listings_cmc.py`.
 
+👉 **tweets_wrapper.py** : a simple file which contains one function : `tweets_wrapper`.
+
+#### I think problems raised from tweets_wrapper or tweets. If someone is available to chat about this it will be a pleasure 😄
+
+👉 **tweets.py** : obviously posting file, but also some textual operations to improve each threads.
 
 
 
