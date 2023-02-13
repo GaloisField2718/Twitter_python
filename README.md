@@ -19,7 +19,9 @@
 
 **cron**
 
-👉 `npm install cron`
+👉 `npm install cron` See [Downloading and installing Node.js
+and npm | npm Docs](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+for more details about `npm`
 
 **TESTING integration**
 👉 `pip3 install textwrap`
@@ -44,9 +46,6 @@ python3 tweets.py
 ```
 
 7️⃣ Automation with cron :
-You can install ``cron` with : `npm install cron` See [Downloading and installing Node.js 
-and npm | npm Docs](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) 
-for more details about `npm`.
 When you have cron you can launch on your computer a command like which provided in 
 `crontab.txt` file.
 
